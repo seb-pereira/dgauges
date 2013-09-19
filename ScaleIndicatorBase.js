@@ -1,5 +1,5 @@
-define(["dojo/_base/lang", "dojo/_base/declare", "dojo/_base/window", "dojo/on", "dojo/touch", "dojo/_base/fx", "dojox/gfx", "dojox/widget/_Invalidating", "./IndicatorBase"],
-	function(lang, declare, win, on, touch, fx, gfx, _Invalidating, IndicatorBase){
+define(["dojo/_base/lang", "dojo/_base/declare", "dojo/_base/window", "dojo/on", "pointer/pointerEvents", "dojo/_base/fx", "dojox/gfx", "dojox/widget/_Invalidating", "./IndicatorBase"],
+	function(lang, declare, win, on, pointer, fx, gfx, _Invalidating, IndicatorBase){
 	return declare("dojox.dgauges.ScaleIndicatorBase", IndicatorBase, {
 		// summary:
 		//		The base class for indicators that rely on a scale for their rendering.
@@ -184,11 +184,11 @@ define(["dojo/_base/lang", "dojo/_base/declare", "dojo/_base/window", "dojo/on",
 			//		Internal method.
 			// tags:
 			//		private
-			var listener = target.on(touch.over , lang.hitch(this, function(){
+			var listener = target.on(pointer.events.pointerover , lang.hitch(this, function(){
 				this.scale._gauge._setCursor("pointer");
 			}));
 			this._cursorListeners.push(listener);
-			listener = target.on(touch.out, lang.hitch(this, function(event){
+			listener = target.on(pointer.events.pointerout, lang.hitch(this, function(event){
 					this.scale._gauge._setCursor("");
 				}
 			));
@@ -217,25 +217,25 @@ define(["dojo/_base/lang", "dojo/_base/declare", "dojo/_base/window", "dojo/on",
 
 			if(this.interactionMode == "mouse" || this.interactionMode == "touch"){
 				if(this.interactionArea == "indicator"){
-					listener = this._gfxGroup.on(touch.press, lang.hitch(this, this._onMouseDown));
+					listener = this._gfxGroup.on(pointer.events.pointerdown, lang.hitch(this, this._onMouseDown));
 					this._downListeners.push(listener);
 					this._connectCursorListeners(this._gfxGroup);
 				}else if(this.interactionArea == "gauge"){
 					if(!this.scale || !this.scale._gauge || !this.scale._gauge._gfxGroup){
 						return true;
 					}
-					listener = this.scale._gauge._gfxGroup.on(touch.press, lang.hitch(this, this._onMouseDown));
+					listener = this.scale._gauge._gfxGroup.on(pointer.events.pointerdown, lang.hitch(this, this._onMouseDown));
 					this._downListeners.push(listener);
-					listener = this._gfxGroup.on(touch.press, lang.hitch(this, this._onMouseDown));
+					listener = this._gfxGroup.on(pointer.events.pointerdown, lang.hitch(this, this._onMouseDown));
 					this._downListeners.push(listener);
 					this._connectCursorListeners(this.scale._gauge._gfxGroup);
 				}else if(this.interactionArea == "area"){
 					if(!this.scale || !this.scale._gauge || !this.scale._gauge._baseGroup){
 						return true;
 					}
-					listener = this.scale._gauge._baseGroup.on(touch.press, lang.hitch(this, this._onMouseDown));
+					listener = this.scale._gauge._baseGroup.on(pointer.events.pointerdown, lang.hitch(this, this._onMouseDown));
 					this._downListeners.push(listener);
-					listener = this._gfxGroup.on(touch.press, lang.hitch(this, this._onMouseDown));
+					listener = this._gfxGroup.on(pointer.events.pointerdown, lang.hitch(this, this._onMouseDown));
 					this._downListeners.push(listener);
 						this._connectCursorListeners(this.scale._gauge._baseGroup);
 				}
@@ -250,10 +250,10 @@ define(["dojo/_base/lang", "dojo/_base/declare", "dojo/_base/window", "dojo/on",
 			//		private
 			var listener = null;
 
-			listener = on(win.doc, touch.move, lang.hitch(this, this._onMouseMove));
+			listener = on(win.doc, pointer.events.pointermove, lang.hitch(this, this._onMouseMove));
 			this._moveAndUpListeners.push(listener);
 			
-			listener = on(win.doc, touch.release, lang.hitch(this, this._onMouseUp));
+			listener = on(win.doc, pointer.events.pointerup, lang.hitch(this, this._onMouseUp));
 			this._moveAndUpListeners.push(listener);
 		},
 
