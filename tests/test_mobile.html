@@ -6,7 +6,8 @@
 		<title>Gauge Mobile Sample</title>
 		<script type="text/javascript" src="../../../dojo/dojo.js" djConfig="parseOnLoad: true"></script>
 		<script language="JavaScript" type="text/javascript">
-			require(["dojox/mobile", "dojox/mobile/parser", "dojox/mobile/compat", "dojox/mobile/deviceTheme", 
+			require(["dojox/mobile", "dojox/mobile/parser", "dojox/mobile/compat", "dojox/mobile/deviceTheme",
+			"dojox/mobile/ScrollableView",
 			"dojox/dgauges/components/default/CircularLinearGauge",
 			"dojox/dgauges/components/default/SemiCircularLinearGauge",
 			"dojox/dgauges/components/default/VerticalLinearGauge",
@@ -29,7 +30,7 @@
 			"dojox/dgauges/components/classic/HorizontalLinearGauge"]);
 		</script>
 	</head>
-	<body style="-webkit-user-select: none; outline: none; visibility:hidden;">
+	<body style="-webkit-user-select: none; outline: none; visibility:hidden;" >
 
 		<div id="home" data-dojo-type="dojox.mobile.View" selected="true">
 			<h1 data-dojo-type="dojox.mobile.Heading">Gauges</h1>
@@ -53,18 +54,18 @@
 			</ul>
 		</div>
 
-		<div id="defaultGauges" data-dojo-type="dojox.mobile.View">
+		<div id="defaultGauges" data-dojo-type="dojox.mobile.ScrollableView">
 			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="#home">Default Theme</h1>
 			<br/>
-			<div data-dojo-type="dojox.dgauges.components.default.CircularLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:200px"></div>
+			<div data-dojo-type="dojox.dgauges.components.default.CircularLinearGauge" data-touch-action="none" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:200px"></div>
 			<br/>
-			<div data-dojo-type="dojox.dgauges.components.default.SemiCircularLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:150px;"></div>
+			<div data-dojo-type="dojox.dgauges.components.default.SemiCircularLinearGauge" data-touch-action="none" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:150px;"></div>
 			<br/>
-			<div data-dojo-type="dojox.dgauges.components.default.HorizontalLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:50px;"></div>
+			<div data-dojo-type="dojox.dgauges.components.default.HorizontalLinearGauge" data-touch-action="none" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:50px;"></div>
 			<br/>
-			<div data-dojo-type="dojox.dgauges.components.default.VerticalLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:300px;"></div>
+			<div data-dojo-type="dojox.dgauges.components.default.VerticalLinearGauge" data-touch-action="none" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:300px;"></div>
 		</div>
-		<div id="classicGauges" data-dojo-type="dojox.mobile.View">
+		<div id="classicGauges" data-dojo-type="dojox.mobile.View" data-touch-action="none">
 			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="#home">Classic Theme</h1>
 			<br/>
 			<div data-dojo-type="dojox.dgauges.components.classic.CircularLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:200px"></div>
@@ -75,7 +76,7 @@
 			<br/>
 			<div data-dojo-type="dojox.dgauges.components.classic.VerticalLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:300px;"></div>
 		</div>
-		<div id="blackGauges" data-dojo-type="dojox.mobile.View">
+		<div id="blackGauges" data-dojo-type="dojox.mobile.View" data-touch-action="none">
 			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="#home">Black Theme</h1>
 			<br/>
 			<div data-dojo-type="dojox.dgauges.components.black.CircularLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:200px"></div>
@@ -86,7 +87,7 @@
 			<br/>
 			<div data-dojo-type="dojox.dgauges.components.black.VerticalLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:300px;"></div>
 		</div>
-		<div id="greyGauges" data-dojo-type="dojox.mobile.View">
+		<div id="greyGauges" data-dojo-type="dojox.mobile.View" data-touch-action="none">
 			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="#home">Grey Theme</h1>
 			<br/>
 			<div data-dojo-type="dojox.dgauges.components.grey.CircularLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:200px"></div>
@@ -97,7 +98,7 @@
 			<br/>
 			<div data-dojo-type="dojox.dgauges.components.grey.VerticalLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:300px;"></div>
 		</div>
-		<div id="greenGauges" data-dojo-type="dojox.mobile.View">
+		<div id="greenGauges" data-dojo-type="dojox.mobile.View" data-touch-action="none">
 			<h1 data-dojo-type="dojox.mobile.Heading" back="Back" moveTo="#home">Green Theme</h1>
 			<br/>
 			<div data-dojo-type="dojox.dgauges.components.green.CircularLinearGauge" interactionMode="touch" style="-webkit-user-select: none; outline: none; height:200px"></div>
